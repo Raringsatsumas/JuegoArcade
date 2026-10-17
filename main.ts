@@ -2,6 +2,96 @@ namespace SpriteKind {
     export const moneda = SpriteKind.create()
     export const flor = SpriteKind.create()
 }
+/**
+ * Animación del personaje
+ * 
+ * Este bloque se ejecuta constantemente mientras el juego está corriendo.
+ * 
+ * - Primero coloca una imagen base al personaje Rosado.
+ * 
+ * - Si vy < 0, significa que el personaje está subiendo, por lo que cambia a la imagen de salto.
+ * 
+ * - Si vy > 0, significa que está cayendo, por lo que muestra otra imagen.
+ * 
+ * - Si no está subiendo ni bajando, usa la posición x para alternar imágenes y simular que camina.
+ * 
+ * - Finalmente, si vx < 0, significa que el personaje se mueve hacia la izquierda, entonces su imagen se voltea horizontalmente.
+ */
+/**
+ * Victoria del juego
+ * 
+ * Cuando el jugador Player toca el tile del portal, el juego termina con victoria.
+ * 
+ * Además, se muestra un efecto visual de nubes (clouds).
+ */
+/**
+ * Tocar la lava / perder
+ * 
+ * Derrota por lava
+ * 
+ * Cuando el jugador toca el tile de lava, el juego termina con derrota.
+ * 
+ * También se muestra el efecto visual blizzard.
+ */
+/**
+ * Inicio del juego
+ * 
+ * - Define el color de fondo.
+ * 
+ * - Crea el sprite Rosado como jugador.
+ * 
+ * - Permite moverlo horizontalmente.
+ * 
+ * - Carga el tilemap.
+ * 
+ * - Aplica gravedad con ay = 200.
+ * 
+ * - La cámara sigue al jugador.
+ * 
+ * - Establece 5 vidas.
+ * 
+ * - Recorre las posiciones marcadas para monedas.
+ * 
+ * - Crea y anima una moneda en cada posición.
+ * 
+ * - Recorre las posiciones marcadas para flores.
+ * 
+ * - Crea una flor en cada posición.
+ * 
+ * - Después reemplaza esas casillas especiales por tiles transparentes.
+ */
+/**
+ * Salto del personaje
+ * 
+ * Cuando se presiona el botón A, se revisa si la velocidad vertical vy de Rosado es 0.
+ * 
+ * Si es así, se cambia vy a -150, haciendo que el personaje suba y salte.
+ */
+/**
+ * Flor que activa un enemigo
+ * 
+ * Cuando el jugador toca una flor, la flor desaparece.
+ * 
+ * Luego se crea una abeja de tipo Enemy, se le agrega una animación, aparece cerca de Rosado y comienza a seguirlo.
+ */
+/**
+ * Recolectar moneda
+ * 
+ * Cuando el jugador toca una moneda, el puntaje aumenta en 1.
+ * 
+ * Después, la moneda desaparece para que no pueda recogerse otra vez.
+ */
+/**
+ * Colisión con enemigo
+ * 
+ * Cuando Rosado toca un enemigo, primero el enemigo desaparece.
+ * 
+ * Después se compara la posición vertical y de Rosado con la del enemigo.
+ * 
+ * - Si Rosado.y < enemigo.y, significa que Rosado está más arriba que el enemigo, así que se interpreta como que cayó encima de él y gana 3 puntos.
+ * 
+ * - En caso contrario, Rosado pierde 1 vida.
+ */
 sprites.onOverlap(SpriteKind.Player, SpriteKind.flor, function (sprite2, otherSprite) {
     sprites.destroy(otherSprite)
     abeja = sprites.create(img`
