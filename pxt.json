@@ -3,7 +3,8 @@
     "description": "",
     "dependencies": {
         "device": "*",
-        "animation": "*"
+        "animation": "*",
+        "arcade-fancy-text": "github:riknoll/arcade-fancy-text#v0.2.2"
     },
     "files": [
         "main.blocks",
@@ -26,5 +27,5 @@
     "supportedTargets": [
         "arcade"
     ],
-    "preferredEditor": "pyprj"
+    "preferredEditor": "blocksprj"
 }
